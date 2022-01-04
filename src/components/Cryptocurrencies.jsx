@@ -11,9 +11,11 @@ const Cryptocurrencies = ({ simplified }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const filteredCoin = cryptosList?.data?.coins.filter((coin) => {
-      return coin.name.toLowerCase().includes(searchTerm.toLowerCase());
-    });
+    setCryptos(cryptosList?.data?.coins);
+
+    const filteredCoin = cryptosList?.data?.coins.filter((coin) =>
+      coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     setCryptos(filteredCoin);
   }, [cryptosList, searchTerm]);
 
@@ -34,16 +36,11 @@ const Cryptocurrencies = ({ simplified }) => {
               />
             </div>
           )}
+
           <Row gutter={[32, 32]} className="crypto-card-container">
-            {cryptos?.map((currency) => (
-              <Col
-                xs={24}
-                sm={12}
-                lg={6}
-                className="crypto-card"
-                key={currency.id}
-              >
-                <Link to={`/crypto/${currency.id}`}>
+            {cryptos?.map((currency, index) => (
+              <Col xs={24} sm={12} lg={6} className="crypto-card" key={index}>
+                <Link to={`/crypto/${currency.uuid}`}>
                   <Card
                     title={`${currency.rank}. ${currency.name}`}
                     extra={

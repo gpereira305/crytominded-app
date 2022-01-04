@@ -19,8 +19,6 @@ const News = ({ simplified }) => {
     count: simplified ? 5 : 18,
   });
 
-  console.log(cryptoNews);
-
   return (
     <>
       {!cryptoNews?.value ? (
@@ -43,8 +41,10 @@ const News = ({ simplified }) => {
                   showSearch
                 >
                   <Option value="Cryptocurrency">Crypto Moeda</Option>
-                  {data?.data?.coins.map((coin) => (
-                    <Option value={coin.name}>{coin.name}</Option>
+                  {data?.data?.coins.map((coin, index) => (
+                    <Option value={coin.name} key={index}>
+                      {coin.name}
+                    </Option>
                   ))}
                 </Select>
               </Col>

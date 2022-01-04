@@ -11,8 +11,6 @@ const HomePage = () => {
   const { data, isFetching } = useGetCryptosQuery(8);
   const globalStats = data?.data?.stats;
 
-  console.log(data);
-
   return (
     <>
       {isFetching ? (
