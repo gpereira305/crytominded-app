@@ -2,13 +2,14 @@
 import { Avatar, Card, Col, Row, Select, Typography } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
+import { Loader } from ".";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
+import GoBackTop from "./GoBackTop";
+import cryptoImage from '../assets/no-logo.jpg'
 
 const { Text, Title } = Typography;
-const { Option } = Select;
-const cryptoImage =
-  "http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg";
+const { Option } = Select; 
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
@@ -16,48 +17,49 @@ const News = ({ simplified }) => {
 
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory,
-    count: simplified ? 5 : 18,
+    count: simplified ? 6 : 100,
   });
 
   return (
     <>
       {!cryptoNews?.value ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>Carregando, aguarde...</h1>
-        </div>
+        <Loader />
       ) : (
-        <>
+        <> 
+
           <Row gutter={[24, 24]}>
             {!simplified && (
-              <Col span={24}>
-                <Select
-                  className="select-news"
-                  placeholder="Filtar por crypto moeda"
-                  optionFilterProp="children"
-                  onChange={(value) => setNewsCategory(value)}
-                  filterOption={(input, option) =>
-                    option.children.toLowerCase().indexOf(input.toLowerCase())
-                  }
-                  showSearch
-                >
-                  <Option value="Cryptocurrency">Crypto Moeda</Option>
-                  {data?.data?.coins.map((coin, index) => (
-                    <Option value={coin.name} key={index}>
-                      {coin.name}
-                    </Option>
-                  ))}
-                </Select>
+              <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
+                <div style={{ width: '35%'}}>
+                    <Select
+                      className="select-news"
+                      placeholder="Filtar por crypto moeda"
+                      optionFilterProp="children"
+                      onChange={(value) => setNewsCategory(value)}
+                      filterOption={(input, option) =>
+                        option.children.toLowerCase().indexOf(input.toLowerCase())
+                      }
+                      showSearch
+                    >
+                      <Option value="Cryptocurrency">CriptoMoeda</Option>
+                      {data?.data?.coins.map((coin, index) => (
+                        <Option value={coin.name} key={index}>
+                          {coin.name}
+                        </Option>
+                      ))}
+                    </Select>
+                </div>
               </Col>
             )}
             {cryptoNews.value.map((news, i) => (
               <Col xs={24} sm={12} lg={8} key={i}>
                 <Card className="news-card" hoverable>
                   <a href={news.url} target="_blank" rel="noopener noreferrer">
+                    <div className="news-image-container">
                     <img
                       src={news?.image?.thumbnail?.contentUrl || cryptoImage}
-                      alt="Cryto moeda"
+                      alt="Critomoeda"
                     />
-                    <div className="news-image-container">
                       <Title className="news-title" level={5}>
                         {news.name}
                       </Title>
@@ -88,6 +90,8 @@ const News = ({ simplified }) => {
                 </Card>
               </Col>
             ))}
+
+            <GoBackTop/>
           </Row>
         </>
       )}

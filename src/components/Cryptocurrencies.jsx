@@ -1,11 +1,14 @@
+import { ArrowDownOutlined, ArrowUpOutlined } from "@ant-design/icons";
 import { Card, Col, Input, Row } from "antd";
 import millify from "millify";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import GoBackTop from "./GoBackTop";
+import Loader from "./Loader";
 
 const Cryptocurrencies = ({ simplified }) => {
-  const count = simplified ? 8 : 100;
+  const count = simplified ? 12 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,14 +20,15 @@ const Cryptocurrencies = ({ simplified }) => {
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setCryptos(filteredCoin);
-  }, [cryptosList, searchTerm]);
+  }, [cryptosList, searchTerm]); 
+
+
+ 
 
   return (
     <>
       {isFetching ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>Carregando, aguarde...</h1>
-        </div>
+        <Loader />
       ) : (
         <>
           {!simplified && (
@@ -37,7 +41,7 @@ const Cryptocurrencies = ({ simplified }) => {
             </div>
           )}
 
-          <Row gutter={[32, 32]} className="crypto-card-container">
+          <Row gutter={[16  , 16  ]} className="crypto-card-container">
             {cryptos?.map((currency, index) => (
               <Col xs={24} sm={12} lg={6} className="crypto-card" key={index}>
                 <Link to={`/crypto/${currency.uuid}`}>
@@ -54,14 +58,27 @@ const Cryptocurrencies = ({ simplified }) => {
                     hoverable
                     bordered={false}
                   >
-                    <p>Valor atual: {millify(currency.price)}</p>
-                    <p>Capital de mercado: {millify(currency.marketCap)}</p>
-                    <p>Oscilação: {millify(currency.change)}</p>
+                    <p>Valor atual: {`US$ ${millify(currency.price)}`}</p>
+                    <p>Capital de mercado: {`US$ ${millify(currency.marketCap)}`}</p> 
+                     <div>Oscilação: {" "}
+                       <span className={`${currency.change < 0 ? 'colorRed' : 'colorGreen'}`}>{`${currency.change}%`}</span> {" "}
+                       <span className={`${currency.change < 0 ? 'colorRed' : 'colorGreen'}`}>
+                          {
+                          currency.change < 0 ? (
+                            <ArrowDownOutlined />
+                          ) : (
+                            <ArrowUpOutlined />
+                          )
+                          
+                          }
+                       </span>
+                     </div>
                   </Card>
                 </Link>
               </Col>
             ))}
           </Row>
+          <GoBackTop/>
         </>
       )}
     </>

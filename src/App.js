@@ -4,12 +4,12 @@ import "./app.css";
 import { Switch, Route, Link } from "react-router-dom";
 import {
   Navbar,
-  Exchanges,
   Cryptocurrencies,
   CryptoDetails,
   News,
   HomePage,
 } from "./components";
+import About from "./components/About";
 
 const App = () => {
   return (
@@ -22,7 +22,6 @@ const App = () => {
           <div className="routes">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/exchanges" component={Exchanges} />
               <Route
                 exact
                 path="/cryptocurrencies"
@@ -30,6 +29,7 @@ const App = () => {
               />
               <Route exact path="/crypto/:coinId" component={CryptoDetails} />
               <Route exact path="/news" component={News} />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </Layout>
@@ -46,7 +46,6 @@ const App = () => {
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>
-            <Link to="/exchanges">Câmbios</Link>
             <Link to="/news">Notícias</Link>
           </Space>
         </div>
