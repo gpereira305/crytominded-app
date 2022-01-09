@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
+ 
 import { Avatar, Card, Col, Row, Select, Typography } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
@@ -6,9 +6,9 @@ import { Loader } from ".";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import GoBackTop from "./GoBackTop";
-import cryptoImage from '../assets/no-logo.jpg'
-
-const { Text, Title } = Typography;
+import cryptoImage from '../assets/no-image.png'
+import { CryptoImageContainer, CryptoImgPublisher, CryptoNewsCard, CryptoNewsContent, CryptoNewsImg, CryptoNewsLink, CryptoNewsProvider, CryptoNewsTitle, CryptoPublisherLogo, CryptoPublisherName, CryptoPublisherTime } from "./styles/CryptoNews";
+ 
 const { Option } = Select; 
 
 const News = ({ simplified }) => {
@@ -20,16 +20,19 @@ const News = ({ simplified }) => {
     count: simplified ? 6 : 100,
   });
 
+
+
+
+
   return (
     <>
       {!cryptoNews?.value ? (
         <Loader />
       ) : (
-        <> 
-
-          <Row gutter={[24, 24]}>
+        <>  
+          <div>
             {!simplified && (
-              <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
+              <div style={{display: 'flex', justifyContent: 'center'}}>
                 <div style={{ width: '35%'}}>
                     <Select
                       className="select-news"
@@ -49,50 +52,51 @@ const News = ({ simplified }) => {
                       ))}
                     </Select>
                 </div>
-              </Col>
+              </div>
             )}
+
+
+           <CryptoNewsCard > 
             {cryptoNews.value.map((news, i) => (
-              <Col xs={24} sm={12} lg={8} key={i}>
-                <Card className="news-card" hoverable>
-                  <a href={news.url} target="_blank" rel="noopener noreferrer">
-                    <div className="news-image-container">
-                    <img
-                      src={news?.image?.thumbnail?.contentUrl || cryptoImage}
-                      alt="Critomoeda"
-                    />
-                      <Title className="news-title" level={5}>
-                        {news.name}
-                      </Title>
-                    </div>
-                    <p>
-                      {news.description > 100
-                        ? `${news.description.substring(0, 100)}...`
-                        : news.description}
-                    </p>
-                    <div className="provider-container">
-                      <div>
-                        <Avatar
+                  <CryptoNewsLink href={news.url} target="_blank" rel="noopener noreferrer" key={i}>
+                    <CryptoImageContainer title="Clique para mais detalhes">
+                        <CryptoNewsImg
+                          src={news?.image?.thumbnail?.contentUrl || cryptoImage}
+                          alt="Critomoeda"
+                        />
+                      <CryptoNewsTitle>
+                        {`${news.name.substring(0, 70)}...`}
+                      </CryptoNewsTitle>
+                    </CryptoImageContainer> 
+                      <CryptoNewsContent>
+                        {`${news.description.substring(0, 460)}...`}
+                      </CryptoNewsContent>
+
+
+                    <CryptoNewsProvider>
+                      <CryptoImgPublisher>
+                        <CryptoPublisherLogo
                           src={
                             news.provider[0]?.image?.thumbnail?.contentUrl ||
                             cryptoImage
                           }
-                          alt="Provedor da noticia"
+                          alt="Provedor da noticia" 
                         />
-                        <Text className="provider-name" italic>
-                          {news.provider[0]?.name}
-                        </Text>
-                      </div>
-                      <Text type="secondary">
+                        <CryptoPublisherName title={news.provider[0]?.name}>
+                          {`${news.provider[0]?.name.substring(0, 30)}...`}
+                        </CryptoPublisherName>
+
+                      </CryptoImgPublisher>
+                      <CryptoPublisherTime>
                         {moment(news.datePublished).startOf("ss").fromNow()}
-                      </Text>
-                    </div>
-                  </a>
-                </Card>
-              </Col>
+                      </CryptoPublisherTime>
+                    </CryptoNewsProvider>
+                  </CryptoNewsLink> 
             ))}
+            </CryptoNewsCard>
 
             <GoBackTop/>
-          </Row>
+          </div>
         </>
       )}
     </>

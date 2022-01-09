@@ -7,7 +7,7 @@ import { Col, Collapse, Select, Table, Typography } from "antd";
 import { useGetCryptoDetailsQuery } from "../services/cryptoApi";
 import { GlobalOutlined, LinkOutlined } from "@ant-design/icons/lib/icons";
 import Loader from "./Loader";
-import cryptoImage from '../assets/no-logo.jpg'
+import cryptoImage from '../assets/no-image.png'
 import GoBackTop from "./GoBackTop";
 
 const { Title, Text } = Typography;

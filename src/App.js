@@ -8,18 +8,19 @@ import {
   CryptoDetails,
   News,
   HomePage,
+  CryptoFooter,
 } from "./components";
 import About from "./components/About";
+import { Container } from "@mui/material";  
 
 const App = () => {
   return (
-    <div className="app">
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="main">
+    <div className="app"> 
+        <Navbar />  
+      {/* Main section */}
+      <div style={{ marginTop: '5%'}}>
         <Layout>
-          <div className="routes">
+          <Container maxWidth="xl" > 
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route
@@ -30,25 +31,11 @@ const App = () => {
               <Route exact path="/crypto/:coinId" component={CryptoDetails} />
               <Route exact path="/news" component={News} />
               <Route exact path="/about" component={About} />
-            </Switch>
-          </div>
+            </Switch> 
+          </Container>
         </Layout>
-        <div className="footer">
-          <Typography.Title
-            level={5}
-            style={{
-              color: "#fff",
-              textAlign: "center",
-            }}
-          >
-            CryptoMinded <br />
-            &copy; All rights reserved
-          </Typography.Title>
-          <Space>
-            <Link to="/">Home</Link>
-            <Link to="/news">Notícias</Link>
-          </Space>
-        </div>
+
+       <CryptoFooter/> 
       </div>
     </div>
   );
