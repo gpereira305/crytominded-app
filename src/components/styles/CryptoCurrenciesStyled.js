@@ -1,12 +1,27 @@
 import styled from "styled-components";
 
-  
+
+export const CryptoInput= styled.div`
+    margin: 5% auto 10% auto;
+    display: flex;
+    justify-content: center; 
+    position: relative;
+
+    @media (max-width: 840px) {
+      margin: 10% auto 10% auto;
+    }
+
+    @media (max-width: 640px){
+      margin: 18% 5%; 
+    }
+`;
  
 
 export const CryptoGrid = styled.div `
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   grid-gap: 20px; 
+  min-height: 61.5vh;
 
   @media (max-width: 1500px) {
     grid-template-columns: repeat(3, 1fr);

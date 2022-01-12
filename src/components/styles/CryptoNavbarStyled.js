@@ -9,8 +9,8 @@ export const NavContainer = styled.div `
    padding: 10px 27px;
    width: 100%;
    z-index: 100; 
-   background: #fff;   
-   box-shadow:  0px 15px 15px 0px rgb(0 0 0 / 6%); 
+   background: #fff;    
+   box-shadow: 0px 8px 44px rgb(0 0 0 / 8%);
 `;
 
 export const NavInnerContainer = styled.nav `
@@ -38,11 +38,7 @@ export const NavInner = styled.h1`
       font-size: 1.1rem;
     }
 `;
-
-export const NavBar = styled.nav ` 
-  /* max-width: 900px; */
-`;
-
+ 
  
 
 export const NavBarMenu = styled.div`
@@ -53,35 +49,48 @@ export const NavBarMenu = styled.div`
    
 
    @media (max-width: 1085px) {
-    min-width: 415px;  
+    min-width: 490px;  
    } 
 
-    @media (max-width: 798px){ 
-      transition:  all ease .3s; 
+    @media (max-width: 801px){ 
+      transition:  all ease-in .3s; 
       flex-direction: column;
-      position: absolute;
-      right: 0;
-      width: 100%;
-      min-height: 185px;
-      top: 47px;   
-      opacity: 0;
+      position: absolute;  
+      height: 100vh;
+      bottom: 0;
+      top: 50px;
+      right: -100%;
+      width: 100%;  
       padding: 0 15px;
-      justify-content: space-evenly;  
+      justify-content: flex-start; 
       background: #fff;   
       box-shadow:  0px 15px 15px 0px rgb(0 0 0 / 6%);
    }  
+
+   @media (max-width: 520px){
+     min-width: 100%;
+   }
 `;
+
+
+export const NavbarWrapper = styled.section`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  @media (max-width: 801px){
+    flex-direction: column;
+    justify-content: space-around;
+    height: 45%;
+  }
+`; 
 
 export const NavBarItem = styled.h4`  
   transition: all ease .3s;
 
   &:hover { 
      transform: translateY(-5px);
-  }
-
-  /* > a {
-      color: rgb(151, 105, 242);    
-    } */
+  } 
 `;
 
 
@@ -90,11 +99,10 @@ export const NavMenuIcon = styled.div`
    position: absolute ;
    right: -6px;
    z-index: 100;
-   top: 2px ; 
+   top: 4px; 
    cursor: pointer;
 
    @media (max-width: 801px){
      display: block;
-   }
-
+   } 
 `;

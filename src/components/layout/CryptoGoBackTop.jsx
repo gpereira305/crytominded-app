@@ -4,7 +4,7 @@ import { BackTop } from 'antd';
 
 
 
-const GoBackTop = () => {
+const CryptoGoBackTop = () => {
   return (
     <div>
        <BackTop />
@@ -12,4 +12,4 @@ const GoBackTop = () => {
   )
 }
 
-export default GoBackTop
+export default CryptoGoBackTop

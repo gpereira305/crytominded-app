@@ -4,9 +4,17 @@ import styled from "styled-components";
 
 
 export const CryptoTitle = styled.div `
-  margin: 5%;  
+  margin: 5% auto 10% auto;  
   text-align: center; 
-`
+
+  @media (max-width: 1085px){
+    margin: 10% auto 15% auto;  
+  }
+
+  @media (max-width: 640px){
+    margin: 18% 5%; 
+  }
+`;
 
 
 export const CryptoLoadMore = styled.div `
@@ -22,4 +30,4 @@ export const CryptoLoadMore = styled.div `
         transform: translateY(-5px); 
       }
   }
-`
+`;

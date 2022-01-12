@@ -1,5 +1,5 @@
 import React from "react";
-import { CryptoAboutText, CryptoTitle } from "./styles/AboutStyled";
+import { CryptoAboutText, CryptoTitle } from "../styles/CryptoAboutStyled";
 import Typography from '@mui/material/Typography' 
 import { makeStyles } from '@mui/styles'; 
 
@@ -7,7 +7,7 @@ import { makeStyles } from '@mui/styles';
 
 
 
-const About = () => {
+const CryptoAbout = () => {
 
 
 
@@ -34,15 +34,15 @@ const classes = useStyles();
       </CryptoTitle> 
       <br /> 
       <CryptoAboutText>  
-        O app Cryptominded foi feito com o objetivo em poder prover ao usuário que tem
-          interesse em saber tudo sobre o mundo do Blockchain e critomoedas. 
-          Através do app é possível acompanhar em tempo real as posições, valores, cotações e históricos
-          sobre as criptomoeadas mais relevantes do momento. 
-          Também é possível se interar das últimas notícias relacionadas a essa nova forma de câmbio 
-          desentralizado ao redor do mundo, visitar suas redes socias e site oficial para mais detalhes e atualizaões. 
+         O app <em>Cryptominded</em> foi feito com o intuíto em poder prover aos seus usuários que têm
+          interesse em conhecer tudo sobre o mundo do Blockchain e critomoedas. 
+          Através desse app será possível acompanhar todas as posições das criptomoedas mais relavantes do mercado mundial, 
+          seus valores, cotações e históricos ao longo de sua criação. 
+          Também é possível se interar das últimas notícias relacionadas à esse mercado, visitar seus sites oficiais e
+          redes sociais para mais detalhes e atualizaões. 
       </CryptoAboutText>
     </div>
   );
 };
 
-export default About;
+export default CryptoAbout;

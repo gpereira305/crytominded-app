@@ -33,8 +33,6 @@
 h1, h2, h3, h4,h5, h6, p {
   margin: 0!important;
 }
-
- 
  
 
 .app { 
@@ -45,63 +43,70 @@ h1, h2, h3, h4,h5, h6, p {
 
 .routes {
   padding: 20px;
-  min-height: 100vh; 
+  min-height: 100vh;  
+ 
+}
+ 
+
+.ant-table-thead > tr > th {
+  display: none;
 }
 
- 
+.ant-table-cell {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--secondary);
 
- 
+}
 
- 
- 
- 
+.ant-table-pagination.ant-pagination { 
+  display: none;
+}
 
-.loader {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-} 
 
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+  height: 45px!important;
+  border-radius: 5px!important; 
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  padding-right: 18px;
+  padding-top: 7px;
+}
+
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector input { 
+  height: 45px;
+}
+
+
+
+/* 
+==================================
+            MEDIA QUERY
+==================================
+*/
 @media screen and (max-width: 800px) {
   .app {
     flex-direction: column;
     overflow: hidden;
-  }
- 
- 
-
- 
+  }  
 }
 
+@media (max-width: 890px){
+
+  .ant-table-cell{
+    font-size: .8rem;
+
+  }
+}
+
+/* 
 .coin-detail-container {
   margin: 30px;
 }
 
-.coin-heading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-bottom: 1px solid var(--border);
-  padding-top: 20px;
-  padding-bottom: 20px;
-  gap: 10px;
-}
-
-.coin-heading-container .coin-name {
-  font-weight: 900;
-  color: var(--blue);
-}
-
-.coin-heading-container p {
-  font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: 20px;
-}
- 
-
+  
 .stats-container h2 {
   font-weight: 700;
   font-size: 1.4rem;
@@ -291,7 +296,7 @@ h1, h2, h3, h4,h5, h6, p {
 
 .ant-card-body {
   padding: 8px !important;
-}
+} */
 
 .colorGreen {
   color: var(--green);

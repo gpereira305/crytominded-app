@@ -1,17 +1,38 @@
  
-import { Avatar, Card, Col, Row, Select, Typography } from "antd";
-import moment from "moment";
 import React, { useState } from "react";
-import { Loader } from ".";
-import { useGetCryptosQuery } from "../services/cryptoApi";
-import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
-import GoBackTop from "./GoBackTop";
-import cryptoImage from '../assets/no-image.png'
-import { CryptoImageContainer, CryptoImgPublisher, CryptoNewsCard, CryptoNewsContent, CryptoNewsImg, CryptoNewsLink, CryptoNewsProvider, CryptoNewsTitle, CryptoPublisherLogo, CryptoPublisherName, CryptoPublisherTime } from "./styles/CryptoNews";
+import {  Select } from "antd";
+import moment from "moment";
+
+import CryptoLoader from "./CryptoLoader";
+import { useGetCryptosQuery } from "../../services/cryptoApi";
+import { useGetCryptoNewsQuery } from "../../services/cryptoNewsApi";
+import CryptoGoBackTop from "./CryptoGoBackTop";
+import cryptoImage from '../../assets/no-image.png'
+
+import { makeStyles } from '@mui/styles';
+
+import { 
+  CryptoImageContainer, 
+  CryptoImgPublisher, 
+  CryptoNewsCard, 
+  CryptoNewsContent, 
+  CryptoNewsImg, 
+  CryptoNewsLink, 
+  CryptoNewsProvider, 
+  CryptoNewsTitle, 
+  CryptoPublisherLogo, 
+  CryptoPublisherName, 
+  CryptoPublisherTime, 
+  CryptoSelect
+} from "../styles/CryptoNewsStyled";
+ 
  
 const { Option } = Select; 
 
-const News = ({ simplified }) => {
+
+  
+
+const CryptoNews = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
   const { data } = useGetCryptosQuery(100);
 
@@ -21,38 +42,46 @@ const News = ({ simplified }) => {
   });
 
 
+  //  STYLES SECTION 
+ const useStyles = makeStyles({
+   select: {
+     width: '50%', 
+     minWidth: '300px'
+   }
+ })
 
 
+ 
+  const classes = useStyles(); 
 
   return (
     <>
       {!cryptoNews?.value ? (
-        <Loader />
+        <CryptoLoader />
       ) : (
         <>  
           <div>
             {!simplified && (
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                <div style={{ width: '35%'}}>
-                    <Select
-                      className="select-news"
-                      placeholder="Filtar por crypto moeda"
-                      optionFilterProp="children"
-                      onChange={(value) => setNewsCategory(value)}
-                      filterOption={(input, option) =>
-                        option.children.toLowerCase().indexOf(input.toLowerCase())
-                      }
-                      showSearch
-                    >
-                      <Option value="Cryptocurrency">CriptoMoeda</Option>
-                      {data?.data?.coins.map((coin, index) => (
-                        <Option value={coin.name} key={index}>
-                          {coin.name}
-                        </Option>
-                      ))}
-                    </Select>
-                </div>
-              </div>
+              <CryptoSelect>  
+
+                  <Select 
+                    className={classes.select}
+                    placeholder="Selecionar por criptomoeda"
+                    optionFilterProp="children"
+                    onChange={(value) => setNewsCategory(value)}
+                    filterOption={(input, option) =>
+                      option.children.toLowerCase().indexOf(input.toLowerCase())
+                    }
+                    showSearch
+                  >
+                    <Option value="Cryptocurrency">CriptoMoeda</Option>
+                    {data?.data?.coins.map((coin, index) => (
+                      <Option value={coin.name} key={index}>
+                        {coin.name}
+                      </Option>
+                    ))}
+                  </Select> 
+              </CryptoSelect>
             )}
 
 
@@ -80,7 +109,7 @@ const News = ({ simplified }) => {
                             news.provider[0]?.image?.thumbnail?.contentUrl ||
                             cryptoImage
                           }
-                          alt="Provedor da noticia" 
+                          alt="Noticiador" 
                         />
                         <CryptoPublisherName title={news.provider[0]?.name}>
                           {`${news.provider[0]?.name.substring(0, 30)}...`}
@@ -95,7 +124,7 @@ const News = ({ simplified }) => {
             ))}
             </CryptoNewsCard>
 
-            <GoBackTop/>
+            <CryptoGoBackTop/>
           </div>
         </>
       )}
@@ -103,4 +132,4 @@ const News = ({ simplified }) => {
   );
 };
 
-export default News;
+export default CryptoNews;

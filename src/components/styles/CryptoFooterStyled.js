@@ -10,4 +10,9 @@ export const FooterCrypto = styled.div `
   padding: 20px;
   align-items: center;
   margin-top: 5%; 
-`
+`;
+
+export const FooterInfo = styled.div`
+  color: var(--white);
+  text-align: center;
+`;

@@ -2,6 +2,20 @@ import styled from "styled-components";
 
 
 
+export const CryptoSelect = styled.div`
+   display: flex;
+   justify-content: center;
+   margin-top: 3%;  
+
+   @media (max-width: 997px){
+    margin: 10% auto 10% auto;
+   }
+
+   @media (max-width: 640px){
+    margin: 18% 5%; 
+   }
+`;
+
 
 export const CryptoNewsCard = styled.div ` 
     display: grid;
