@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 
-export const FooterCrypto = styled.div `
+export const FooterCrypto = styled.section `
   background-color: #111116;
   display: flex;
   flex-direction: column;

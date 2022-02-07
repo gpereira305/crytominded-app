@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 const classes = useStyles();
 
   return (
-    <div>
+    <section>
       <CryptoTitle>
       <Typography variant="h4" gutterBottom className={classes.titleH4}>
          Sobre o Cryptominded
@@ -41,7 +41,7 @@ const classes = useStyles();
           Também é possível se interar das últimas notícias relacionadas à esse mercado, visitar seus sites oficiais e
           redes sociais para mais detalhes e atualizaões. 
       </CryptoAboutText>
-    </div>
+    </section>
   );
 };
 

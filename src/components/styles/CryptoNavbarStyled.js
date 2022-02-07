@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 
-export const NavContainer = styled.div `
+export const NavContainer = styled.section `
    display : flex;
    align-items: center;
    position: fixed;

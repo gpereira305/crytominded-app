@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 
-export const CryptoTitle = styled.div `
+export const CryptoTitle = styled.section `
   margin: 5% auto 10% auto;  
   text-align: center; 
 
@@ -17,7 +17,7 @@ export const CryptoTitle = styled.div `
 `;
 
 
-export const CryptoLoadMore = styled.div `
+export const CryptoLoadMore = styled.section `
   display: flex;
   justify-content: center;
   margin-top: 35px;

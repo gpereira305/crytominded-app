@@ -17,7 +17,7 @@ export const CryptoInput= styled.div`
 `;
  
 
-export const CryptoGrid = styled.div `
+export const CryptoGrid = styled.section `
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   grid-gap: 20px; 
