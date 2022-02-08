@@ -29,6 +29,11 @@ Para ver esse app online acesse esse link : https://cryptominded.netlify.app
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
+## Installation
+Para ter esse projeto em ambiente de desenvolvimento, basta clicar em "code" e escolher uma das 3 opções para download, em seguida abrir em um editor de código,
+acessar a raiz do projeto e digitar "npm install & npm run start"
+
+
 ## Demo
 
 *HomePage
