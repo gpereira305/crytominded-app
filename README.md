@@ -34,16 +34,16 @@ Para ver esse app online acesse esse link : https://cryptominded.netlify.app
 *HomePage
 ![homepage](https://user-images.githubusercontent.com/66249777/153016685-7bb77369-02fa-4f2e-89f5-29cb7581c9d5.png)
 
-*Painel de Pedidos
-![order-panel](https://user-images.githubusercontent.com/66249777/107379743-fd915e80-6acb-11eb-9b15-afbc9c2bcc9e.png)
+*Página de pesquisa
+![cryptopage](https://user-images.githubusercontent.com/66249777/153016929-99135584-6c5a-4c7c-97ec-55d960f396c0.png)
 
-*Painel de produtos
-![product-panel](https://user-images.githubusercontent.com/66249777/107379848-18fc6980-6acc-11eb-8247-2f618bdfdc98.png)
+*Página de notícias
+![newspage](https://user-images.githubusercontent.com/66249777/153017003-639c00a5-7be2-4cca-847b-170ec1045a99.png)
 
-*Painel de clientes
-![customer-panel](https://user-images.githubusercontent.com/66249777/107379910-29144900-6acc-11eb-8c86-60a2e748a73c.png)
+*Página de detalhes
+![cryptodetailspage](https://user-images.githubusercontent.com/66249777/153017134-a64ca414-142d-4734-b11f-bfcea700cbf2.png)
 
 *Versão mobile
-![responive-panel](https://user-images.githubusercontent.com/66249777/107379979-39c4bf00-6acc-11eb-8a40-cf18eee0f44a.png)
+![cryptomobile](https://user-images.githubusercontent.com/66249777/153017200-147df249-becf-4932-ad6c-390261fd5f49.png)
 
 
